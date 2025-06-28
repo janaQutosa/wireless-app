@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-5xl mx-auto">
+    <!-- Hero Section -->
+    <div class="text-center mb-12 animate__animated animate__fadeIn">
+        <img src="{{ url_for('static', filename='images/cover.jpg') }}" alt="Network Design" class="w-full h-64 object-cover rounded-lg mb-4" loading="lazy">
+        <h2 class="text-4xl font-bold mb-4">AI-Powered Wireless Network Design</h2>
+        <p class="text-lg text-gray-300">Design and analyze wireless and mobile networks with AI-driven insights and visualizations.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg transform transition-all duration-300 card wireless-card" data-animate="pulse">
+            <h3 class="text-xl font-semibold">Wireless Communication</h3>
+            <p class="text-gray-300">Compute data rates through sampler, quantizer, encoders, and more.</p>
+            <a href="/wireless" class="text-blue-400 hover:underline mt-2 inline-block">Start</a>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg transform transition-all duration-300 card ofdm-card" data-animate="bounce">
+            <h3 class="text-xl font-semibold">OFDM Systems</h3>
+            <p class="text-gray-300">Calculate data rates and spectral efficiency for OFDM networks.</p>
+            <a href="/ofdm" class="text-blue-400 hover:underline mt-2 inline-block">Start</a>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg transform transition-all duration-300 card link-budget-card" data-animate="pulse">
+            <h3 class="text-xl font-semibold">Link Budget</h3>
+            <p class="text-gray-300">Analyze transmitted and received power in a flat environment.</p>
+            <a href="/link_budget" class="text-blue-400 hover:underline mt-2 inline-block">Start</a>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg transform transition-all duration-300 card cellular-card" data-animate="bounce">
+            <h3 class="text-xl font-semibold">Cellular Design</h3>
+            <p class="text-gray-300">Design a cellular network based on user-specified parameters.</p>
+            <a href="/cellular" class="text-blue-400 hover:underline mt-2 inline-block">Start</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

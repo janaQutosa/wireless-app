@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl font-bold mb-4">OFDM System</h2>
+    <form id="ofdm-form" class="bg-gray-800 p-6 rounded-lg">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+                <label class="block mb-2">Subcarrier Spacing (kHz)</label>
+                <input type="number" name="subcarrier_spacing" step="0.1" class="w-full p-2 bg-gray-700 rounded" required>
+            </div>
+            <div>
+                <label class="block mb-2">Subcarriers per Resource Block</label>
+                <input type="number" name="subcarriers_per_rb" class="w-full p-2 bg-gray-700 rounded" required>
+            </div>
+            <div>
+                <label class="block mb-2">Symbols per Slot</label>
+                <input type="number" name="symbols_per_slot" class="w-full p-2 bg-gray-700 rounded" required>
+            </div>
+            <div>
+                <label class="block mb-2">Modulation Order (e.g., 4, 16, 64)</label>
+                <input type="number" name="modulation_order" class="w-full p-2 bg-gray-700 rounded" required>
+            </div>
+            <div>
+                <label class="block mb-2">Number of Resource Blocks</label>
+                <input type="number" name="resource_blocks" class="w-full p-2 bg-gray-700 rounded" required>
+            </div>
+            <div>
+                <label class="block mb-2">Bandwidth (MHz)</label>
+                <input type="number" name="bandwidth" step="0.1" class="w-full p-2 bg-gray-700 rounded" required>
+            </div>
+            <div>
+                <label class="block mb-2">Code Rate (0–1)</label>
+                <input type="number" name="code_rate" step="0.01" class="w-full p-2 bg-gray-700 rounded" required>
+            </div>
+        </div>
+        <button type="submit" class="mt-4 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded">Calculate</button>
+    </form>
+    <div id="results" class="mt-6 hidden">
+        <h3 class="text-xl font-semibold mb-4">Results</h3>
+        <table class="w-full bg-gray-800 rounded-lg">
+            <thead>
+                <tr class="bg-gray-700">
+                    <th class="p-2">Metric</th>
+                    <th class="p-2">Value</th>
+                </tr>
+            </thead>
+            <tbody id="results-table"></tbody>
+        </table>
+        <canvas id="results-chart" class="mt-4"></canvas>
+        <h3 class="text-xl font-semibold mt-4">Explanation</h3>
+        <p id="explanation" class="bg-gray-800 p-4 rounded-lg whitespace-pre-line"></p>
+    </div>
+</div>
+{% endblock %}

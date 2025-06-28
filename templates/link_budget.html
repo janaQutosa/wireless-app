@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl font-bold mb-4">Link Budget Calculator</h2>
+    <form id="link-budget-form" class="bg-gray-800 p-6 rounded-lg">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+           <div>
+    <label class="block mb-2">Transmitter Power (dBm)</label>
+    <input type="number" name="tx_power" step="0.1" class="w-full p-2 bg-gray-700 rounded" required>
+</div>
+<div>
+    <label class="block mb-2">Transmitter Antenna Gain (dBi)</label>
+    <input type="number" name="tx_gain" step="0.1" class="w-full p-2 bg-gray-700 rounded" required>
+</div>
+<div>
+    <label class="block mb-2">Receiver Antenna Gain (dBi)</label>
+    <input type="number" name="rx_gain" step="0.1" class="w-full p-2 bg-gray-700 rounded" required>
+</div>
+<div>
+    <label class="block mb-2">Path Loss (dB)</label>
+    <input type="number" name="path_loss" step="0.1" class="w-full p-2 bg-gray-700 rounded" required>
+</div>
+<div>
+    <label class="block mb-2">Noise Figure (dB)</label>
+    <input type="number" name="noise_figure" step="0.1" class="w-full p-2 bg-gray-700 rounded" required>
+</div>
+<div>
+    <label class="block mb-2">Data Rate (kbps)</label>
+    <input type="number" name="data_rate" step="0.1" class="w-full p-2 bg-gray-700 rounded" required>
+</div>
+<div>
+    <label class="block mb-2">Modulation Scheme</label>
+    <select name="modulation" class="w-full p-2 bg-gray-700 rounded" required>
+        <option value="BPSK/QPSK">BPSK/QPSK</option>
+        <option value="8-PSK">8-PSK</option>
+        <option value="16-PSK">16-PSK</option>
+    </select>
+</div>
+<div>
+    <label class="block mb-2">Bit Error Rate (BER)</label>
+    <input type="number" name="ber" step="1e-8" class="w-full p-2 bg-gray-700 rounded" required>
+</div>
+<div>
+    <label class="block mb-2">Other Losses (dB)</label>
+    <input type="number" name="other_losses" step="0.1" class="w-full p-2 bg-gray-700 rounded" required>
+</div>
+        </div>
+        <button type="submit" class="mt-4 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded">Calculate</button>
+    </form>
+    <div id="results" class="mt-6 hidden">
+        <h3 class="text-xl font-semibold mb-4">Results</h3>
+        <table class="w-full bg-gray-800 rounded-lg">
+            <thead>
+                <tr class="bg-gray-700">
+                    <th class="p-2">Metric</th>
+                    <th class="p-2">Value (dB or dBm)</th>
+                </tr>
+            </thead>
+            <tbody id="results-table"></tbody>
+        </table>
+        <canvas id="results-chart" class="mt-4"></canvas>
+        <h3 class="text-xl font-semibold mt-4">Explanation</h3>
+        <p id="explanation" class="bg-gray-800 p-4 rounded-lg whitespace-pre-line"></p>
+    </div>
+</div>
+{% endblock %}

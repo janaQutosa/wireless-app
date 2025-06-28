@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl font-bold mb-4">Cellular System Design</h2>
+    <form id="cellular-form" class="bg-gray-800 p-6 rounded-lg">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+           <div>
+    <label class="block mb-2">Reference Power at Reference Distance (dBm)</label>
+    <input type="number" name="P_ref" step="0.1"  class="w-full p-2 bg-gray-700 rounded">
+</div>
+<div>
+    <label class="block mb-2">Reference Distance (meters)</label>
+    <input type="number" name="reference_distance" step="0.1" class="w-full p-2 bg-gray-700 rounded">
+</div>
+<div>
+    <label class="block mb-2">Path Loss Exponent</label>
+    <input type="number" name="path_loss_exponent" step="0.1"  class="w-full p-2 bg-gray-700 rounded">
+</div>
+<div>
+    <label class="block mb-2">Receiver Sensitivity (watts)</label>
+    <input type="number" name="receiver_sensitivity" step="1"  class="w-full p-2 bg-gray-700 rounded">
+</div>
+<div>
+    <label class="block mb-2">Minimum SIR (dB)</label>
+    <input type="number" name="SIR_dB" step="0.1"  class="w-full p-2 bg-gray-700 rounded">
+</div>
+<div>
+    <label class="block mb-2">Service Area (m²)</label>
+    <input type="number" name="service_area" step="1"  class="w-full p-2 bg-gray-700 rounded">
+</div>
+<div>
+    <label class="block mb-2">Total Subscribers</label>
+    <input type="number" name="subscribers"  class="w-full p-2 bg-gray-700 rounded">
+</div>
+<div>
+    <label class="block mb-2">Calls per Day per Subscriber</label>
+    <input type="number" name="calls_per_day" step="0.1"  class="w-full p-2 bg-gray-700 rounded">
+</div>
+<div>
+    <label class="block mb-2">Call Duration (minutes)</label>
+    <input type="number" name="call_duration" step="0.1" class="w-full p-2 bg-gray-700 rounded">
+</div>
+<div>
+    <label class="block mb-2">GoS Value</label>
+    <input type="text" name="GoS_list" placeholder="0.02" class="w-full p-2 bg-gray-700 rounded">
+</div>
+<div>
+    <label class="block mb-2">Timeslots per Carrier</label>
+    <input type="number" name="timeslots_per_carrier"  class="w-full p-2 bg-gray-700 rounded">
+</div>
+
+
+        </div>
+        <button type="submit" class="mt-4 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded">Calculate</button>
+    </form>
+    <div id="results" class="mt-6 hidden">
+        <h3 class="text-xl font-semibold mb-4">Results</h3>
+        <table class="w-full bg-gray-800 rounded-lg">
+            <thead>
+                <tr class="bg-gray-700">
+                    <th class="p-2">Metric</th>
+                    <th class="p-2">Value</th>
+                </tr>
+            </thead>
+            <tbody id="results-table"></tbody>
+        </table>
+        <canvas id="results-chart" class="mt-4"></canvas>
+        <h3 class="text-xl font-semibold mt-4">Explanation</h3>
+        <p id="explanation" class="bg-gray-800 p-4 rounded-lg whitespace-pre-line"></p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI-powered wireless network design tool for analyzing wireless, OFDM, link budget, and cellular systems.">
+    <meta name="keywords" content="wireless network, OFDM, link budget, cellular design, AI">
+    <title>Wireless Network Design</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="bg-gradient-to-br from-gray-900 to-blue-900 text-white font-poppins overflow-x-hidden">
+    <!-- Gradient Background Animation -->
+    <div class="fixed inset-0 z-[-1] bg-gradient-to-br from-gray-900 to-blue-900 opacity-80 animate-gradient"></div>
+
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div id="sidebar" class="w-64 bg-gray-800 p-4 fixed md:static h-full transform -translate-x-full md:translate-x-0 transition-transform duration-300 z-50">
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-2xl font-bold animate__animated animate__fadeIn">Network Design</h1>
+                <button id="close-sidebar" class="md:hidden text-white text-2xl">&times;</button>
+            </div>
+            <nav>
+                <a href="/" class="block py-2 px-4 hover:bg-blue-700 rounded transition-colors duration-200 animate__animated animate__fadeInLeft">Home</a>
+                <a href="/wireless" class="block py-2 px-4 hover:bg-blue-700 rounded transition-colors duration-200 animate__animated animate__fadeInLeft">Wireless System</a>
+                <a href="/ofdm" class="block py-2 px-4 hover:bg-blue-700 rounded transition-colors duration-200 animate__animated animate__fadeInLeft">OFDM System</a>
+                <a href="/link_budget" class="block py-2 px-4 hover:bg-blue-700 rounded transition-colors duration-200 animate__animated animate__fadeInLeft">Link Budget</a>
+                <a href="/cellular" class="block py-2 px-4 hover:bg-blue-700 rounded transition-colors duration-200 animate__animated animate__fadeInLeft">Cellular Design</a>
+            </nav>
+        </div>
+        <!-- Mobile Menu Toggle -->
+        <button id="open-sidebar" class="md:hidden fixed top-4 left-4 text-white text-2xl z-50">&#9776;</button>
+        <!-- Main Content -->
+        <div class="flex-1 p-8 overflow-auto">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+  
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+</body>
+</html>

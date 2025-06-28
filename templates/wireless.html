@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl font-bold mb-4">Wireless Communication System</h2>
+    <form id="wireless-form" class="bg-gray-800 p-6 rounded-lg">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+                <label class="block mb-2">Sampling Rate (MHz)</label>
+                <input type="number" name="sampling_rate" step="0.1" class="w-full p-2 bg-gray-700 rounded" required>
+            </div>
+            <div>
+                <label class="block mb-2">Bits per Sample</label>
+                <input type="number" name="bits_per_sample" class="w-full p-2 bg-gray-700 rounded" required>
+            </div>
+            <div>
+                <label class="block mb-2">Compression Ratio</label>
+                <input type="number" name="compression_ratio" step="0.1" class="w-full p-2 bg-gray-700 rounded" required>
+            </div>
+            <div>
+                <label class="block mb-2">Code Rate</label>
+                <input type="number" name="code_rate" step="0.1" class="w-full p-2 bg-gray-700 rounded" required>
+            </div>
+            <div>
+                <label class="block mb-2">Overhead (%)</label>
+                <input type="number" name="overhead" step="0.1" class="w-full p-2 bg-gray-700 rounded" required>
+            </div>
+        </div>
+        <button type="submit" class="mt-4 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded">Calculate</button>
+    </form>
+    <div id="results" class="mt-6 hidden">
+        <h3 class="text-xl font-semibold mb-4">Results</h3>
+        <table class="w-full bg-gray-800 rounded-lg">
+            <thead>
+                <tr class="bg-gray-700">
+                    <th class="p-2">Block</th>
+                    <th class="p-2">Data Rate (Mbps)</th>
+                </tr>
+            </thead>
+            <tbody id="results-table"></tbody>
+        </table>
+        <canvas id="results-chart" class="mt-4"></canvas>
+        
+        <h3 class="text-xl font-semibold mt-4">Explanation</h3>
+        <p id="explanation" class="bg-gray-800 p-4 rounded-lg"></p>
+    </div>
+</div>
+{% endblock %}
