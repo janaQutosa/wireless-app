@@ -1,0 +1,6 @@
+openai>=1.0.0
+Flask==3.0.3
+requests
+python-dotenv
+cachetools
+openai
